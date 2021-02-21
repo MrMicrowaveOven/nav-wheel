@@ -12,6 +12,7 @@ const Wheel = (props) => {
               <div className="four left">prev</div>
               <div className="four right">next</div>
               <div className="four bottom">more</div>
+              <div className="circle"/>
             </div>
   }
 
