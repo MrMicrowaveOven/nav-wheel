@@ -1,0 +1,28 @@
+.wheel-container {
+  margin-top: 200px;
+  height: 300px;
+  width: 300px;
+  font-size: 30px
+}
+
+.four {
+  position: relative;
+}
+
+.top {
+  top: 0;
+}
+
+.left {
+  top: 100px;
+  float: left;
+}
+
+.right {
+  top: 100px;
+  float: right;
+}
+
+.bottom {
+  top: 230px;
+}

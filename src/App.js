@@ -5,7 +5,7 @@ function App() {
   return (
     <div className="App">
       <Wheel
-        numSpokes={5}
+        numSpokes={4}
       />
     </div>
   );
