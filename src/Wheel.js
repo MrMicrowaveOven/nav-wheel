@@ -9,7 +9,7 @@ const Wheel = (props) => {
   const fourSpokes = () => {
     return  active
       ? <div
-          className="wheel-container"
+          className="wheel-container active"
           onTouchEnd={() => setActive(false)}
           onMouseUp={() => setActive(false)}
         >

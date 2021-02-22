@@ -3,8 +3,15 @@
   margin-top: 200px;
   height: 300px;
   width: 300px;
-  font-size: 30px
+  font-size: 30px;
 }
+
+.active {
+  border-radius: 50%;
+  border-width: 1px;
+  border-style: solid;
+}
+
 .top, .bottom, .left, .right {
   width: 100px;
   height: 100px;
