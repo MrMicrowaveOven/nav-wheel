@@ -1,3 +1,7 @@
 .App {
   text-align: center;
 }
+
+.non-mobile-alert {
+  font-size: 40px;
+}
