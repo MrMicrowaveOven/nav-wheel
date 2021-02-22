@@ -8,13 +8,16 @@ const Wheel = (props) => {
 
   const fourSpokes = () => {
     return  <div className="wheel-container">
-              <div className="four top">back</div>
-              <div className="four left">prev</div>
-              <div className="four right">next</div>
-              <div className="four bottom">more</div>
-              <div className="circle"/>
+              <div className="top">back</div>
+              <div className="row">
+                <div className="left">prev</div>
+                <div className="right">next</div>
+              </div>
+              <div className="bottom">more</div>
             </div>
   }
+
+
 
   const spokesOptions = {
     4: fourSpokes()
