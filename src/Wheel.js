@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ReactDOM from 'react-dom';
 import './Wheel.css';
 
 const Wheel = (props) => {
@@ -6,11 +7,25 @@ const Wheel = (props) => {
 
   const [active, setActive] = useState(false)
 
-  const showMe = (ref) => {
-    // ReactDOM
-    // .findDOMNode(this.refs[ref])
-    // .getBoundingClientRect(); //outputs <h3> coordinates
+  const handleDrag = (e) => {
+    const x = e.changedTouches[0].screenX
+    const y = e.changedTouches[0].screenY
+    const topRect = top.current.getBoundingClientRect(); //outputs <h3> coordinates
+    const leftRect = left.current.getBoundingClientRect(); //outputs <h3> coordinates
+    const rightRect = right.current.getBoundingClientRect(); //outputs <h3> coordinates
+    const bottomRect = top.current.getBoundingClientRect(); //outputs <h3> coordinates
+    // console.log(bottomRect)
   }
+
+  // const isInside = (cursor, rects) => {
+  //   let insider = null
+  //   rects.forEach((rect, i) => {
+  //     const {top, left, right, bottom} = rect;
+  //
+  //   });
+  //
+  // }
+
 
   const top = React.createRef();
   const left = React.createRef();
@@ -23,7 +38,7 @@ const Wheel = (props) => {
           className="wheel-container active"
           onTouchEnd={() => setActive(false)}
           onMouseUp={() => setActive(false)}
-          onTouchMove={(e) => console.log(e)}
+          onTouchMove={(e) => handleDrag(e)}
         >
           <div className="top" ref={top}>back</div>
           <div className="row">
