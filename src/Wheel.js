@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import './Wheel.css';
 
@@ -34,6 +34,11 @@ const Wheel = (props) => {
     return insider;
   }
 
+  useEffect(() => {
+    if(!active) {
+      setHighlighted(null)
+    }
+  },[active])
 
   const top = React.createRef();
   const left = React.createRef();
