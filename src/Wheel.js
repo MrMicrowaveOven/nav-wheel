@@ -6,25 +6,33 @@ const Wheel = (props) => {
   const {numSpokes} = props
 
   const [active, setActive] = useState(false)
+  const [highlighted, setHighlighted] = useState(null)
 
   const handleDrag = (e) => {
-    const x = e.changedTouches[0].screenX
-    const y = e.changedTouches[0].screenY
+    const x = e.changedTouches[0].clientX
+    const y = e.changedTouches[0].clientY
     const topRect = top.current.getBoundingClientRect(); //outputs <h3> coordinates
     const leftRect = left.current.getBoundingClientRect(); //outputs <h3> coordinates
     const rightRect = right.current.getBoundingClientRect(); //outputs <h3> coordinates
-    const bottomRect = top.current.getBoundingClientRect(); //outputs <h3> coordinates
-    // console.log(bottomRect)
+    const bottomRect = bottom.current.getBoundingClientRect(); //outputs <h3> coordinates
+
+    const inside = isInside([x,y], [topRect, leftRect, rightRect, bottomRect])
+    setHighlighted(inside)
   }
 
-  // const isInside = (cursor, rects) => {
-  //   let insider = null
-  //   rects.forEach((rect, i) => {
-  //     const {top, left, right, bottom} = rect;
-  //
-  //   });
-  //
-  // }
+  const isInside = (cursor, rects) => {
+    const [x, y] = cursor;
+    let insider = null
+    rects.forEach((rect, i) => {
+      const {top, left, right, bottom} = rect;
+      if (x > left && x < right) {
+        if (y > top && y < bottom) {
+          insider = i
+        }
+      }
+    });
+    return insider;
+  }
 
 
   const top = React.createRef();
@@ -40,13 +48,13 @@ const Wheel = (props) => {
           onMouseUp={() => setActive(false)}
           onTouchMove={(e) => handleDrag(e)}
         >
-          <div className="top" ref={top}>back</div>
+          <div className={highlighted === 0 ? "top highlighted" : "top"} ref={top}>back</div>
           <div className="row">
-            <div className="left" ref={left}>prev</div>
+            <div className={highlighted === 1 ? "left highlighted" : "left"} ref={left}>prev</div>
             <div className="circle"></div>
-            <div className="right" ref={right}>next</div>
+            <div className={highlighted === 2 ? "right highlighted" : "right"} ref={right}>next</div>
           </div>
-          <div className="bottom" ref={bottom}>more</div>
+          <div className={highlighted === 3 ? "bottom highlighted" : "bottom"} ref={bottom}>more</div>
         </div>
       : <div className="wheel-container">
           <div
